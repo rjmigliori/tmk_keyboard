@@ -25,10 +25,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "report.h"
 #include "print.h"
 
-
-
-
-
 /* 
  * IBM Terminal keyboard 6110345(122keys)/1392595(102keys)
  * http://geekhack.org/showthread.php?10737-What-Can-I-Do-With-a-Terminal-Model-M
@@ -72,7 +68,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     { KC_NO   , KC_NO, KC_##K6A, KC_NO, KC_NO, KC_##K6D, KC_##K6E, KC_##K6F }, \
     { KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO }, \
     { KC_NO   , KC_NO, KC_NO, KC_NO   , KC_NO, KC_NO, KC_NO, KC_NO    }, \
-    { KC_NO,    KC_NO,    KC_NO,    KC_NO   , KC_NO, KC_NO,    KC_NO,    KC_NO,   }, \
+    { KC_NO,    KC_NO,    KC_NO,    KC_NO   , KC_NO, KC_NO,    KC_NO,    KC_NO   }, \
 }
 
 
@@ -83,91 +79,76 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,---.   ,---------------. ,---------------. ,---------------. ,-----------.
      * |Esc|   |F1 |F2 |F3 |F4 | |F5 |F6 |F7 |F8 | |F9 |F10|F11|F12| |PrS|ScL|Pau|
      * `---'   `---------------' `---------------' `---------------' `-----------'
-     * ,-----------------------------------------------------------. ,-----------. ,---------------.
-     * |  `|  1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|Backspa| |Ins|Hom|PgU| |NmL|  /|  *|  -|
-     * |-----------------------------------------------------------| |-----------| |---------------|
-     * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|    \| |Del|End|PgD| |  7|  8|  9|   |
-     * |-----------------------------------------------------------| `-----------' |-----------|  +|
-     * |CapsLo|  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Return  |               |  4|  5|  6|   |
-     * |-----------------------------------------------------------|     ,---.     |---------------|
-     * |Shift   |  Z|  X|  C|  V|  B|  N|  M|  ,|  ,|  /|Shift     |     |Up |     |  1|  2|  3|   |
-     * |-----------------------------------------------------------| ,-----------. |-----------|Ent|
-     * |Ctrl|    |Alt |          Space              |Alt |    |Ctrl| |Lef|Dow|Rig| |      0|  .|   |
-     * `----'    `---------------------------------------'    `----' `-----------' `---------------'
+     * ,-----------------------------------------------------------. ,-----------. 
+     * |  `|  1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|Backspa| |Ins|Hom|PgU| 
+     * |-----------------------------------------------------------| |-----------| 
+     * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|    \| |Del|End|PgD| 
+     * |-----------------------------------------------------------| `-----------' 
+     * |CapsLo|  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Return  |               
+     * |-----------------------------------------------------------|     ,---.     
+     * |Shift   |  Z|  X|  C|  V|  B|  N|  M|  ,|  ,|  /|Shift     |     |Up |     
+     * |-----------------------------------------------------------| ,-----------. 
+     * |Ctrl|    |Alt |          Space              |Alt |    |Ctrl| |Lef|Dow|Rig| 
+     * `----'    `---------------------------------------'    `----' `-----------' 
      */
 
     // Default 
+    // KEYMAP_SSK(
+    //  ESC,       F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10, F11, F12,     PSCR,SLCK, BRK,
+
+    //  GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,   0,MINS, EQL,BSPC,      INS,HOME,PGUP,
+    //  TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,LBRC,RBRC,BSLS,      DEL, END,PGDN,
+    // CAPS,   A,   S,   D,   F,   G,   H,   J,   K,   L,SCLN,QUOT,      ENT,                    
+    // LSFT,        Z,   X,   C,   V,   B,   N,   M,COMM, DOT,SLSH,     RSFT,            UP,     
+    // LCTL,     LALT,                SPC,                    LALT,     RCTL,     LEFT,DOWN,RGHT
+    // ),    
+
+    // Layer 0 (Base) 
     KEYMAP_SSK(
      ESC,       F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10, F11, F12,     PSCR,SLCK, BRK,
 
      GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,   0,MINS, EQL,BSPC,      INS,HOME,PGUP,
      TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,LBRC,RBRC,BSLS,      DEL, END,PGDN,
-    CAPS,   A,   S,   D,   F,   G,   H,   J,   K,   L,SCLN,QUOT,      ENT,                    
+    FN1,   A,   S,   D,   F,   G,   H,   J,   K,   L,SCLN,QUOT,      ENT,                    
     LSFT,        Z,   X,   C,   V,   B,   N,   M,COMM, DOT,SLSH,     RSFT,            UP,     
     LCTL,     LALT,                SPC,                    FN0,     RCTL,     LEFT,DOWN,RGHT
     ),
 
-    // Momentary
+    // Layer 1 (FN0; Momentary)
     KEYMAP_SSK(
-     ESC,       F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10, F11, F12,     FN1,FN2,FN3,
+     ESC,       F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10, F11, F12,     PSCR,SLCK, BTLD,
 
      GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,   0,MINS, EQL,BSPC,      INS,HOME,PGUP,
      TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,LBRC,RBRC,BSLS,      DEL, END,PGDN,
     CAPS,   A,   S,   D,   F,   G,   H,   J,   K,   L,SCLN,QUOT,      ENT,                    
     LSFT,        Z,   X,   C,   V,   B,   N,   M,COMM, DOT,SLSH,     RSFT,            UP,     
-    LCTL,     LALT,                A,                    TRNS,     RCTL,     LEFT,DOWN,RGHT
+    LCTL,     LALT,                SPC,                    TRNS,     RCTL,     LEFT,DOWN,RGHT
     ),    
 
+    // Layer 2 (FN1; Momentary)
+    KEYMAP_SSK(
+     ESC,       F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10, F11, F12,     PSCR,SLCK, BTLD,
+
+     GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,   0,MINS, EQL,BSPC,      INS,HOME,PGUP,
+     TAB,   Q,   W,   E,   R,   T,   Y,   4,   5,   6,   P,LBRC,RBRC,BSLS,      DEL, END,PGDN,
+    TRNS,   A,   S,   D,   F,   G,   H,   1,   2,   3,SCLN,QUOT,      ENT,                    
+    LSFT,        Z,   X,   C,   V,   B,   N,   0,COMM, DOT,SLSH,     RSFT,            UP,     
+    CAPS,     LGUI,                SPC,                    LALT,     RCTL,     LEFT,DOWN,RGHT
+    ),     
+
 };
-
-/* id for user defined functions */
-enum function_id {
-    PROMICRO_RESET,
-    PROMICRO_PROGRAM,   
-    TEST, 
-};
-
-// const action_t PROGMEM fn_actions[] = {    
-//     // [0] = ACTION_LAYER_MOMENTARY(1),    
-//     [1] = ACTION_FUNCTION(PROMICRO_RESET), 
-//     [2] = ACTION_FUNCTION_TAP(PROMICRO_PROGRAM),
-//     [3] = ACTION_FUNCTION_TAP(TEST),
-
-// };
 
 const uint8_t PROGMEM fn_layer[] = {
-    1,
-};
-
-
-#define PROMICRO_RESET promicro_bootloader_jmp(false)
-const uint8_t PROGMEM fn_keycode[] = {
-    KC_NO,                  // FN0 
-    PROMICRO_PROGRAM,       // FN1 
-    PROMICRO_RESET,         // FN2 
-    TEST,                   // FN3 
+    1, //FN0
+    2, //FN1 
 };
 
 
 
-
-void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
-{
-    switch(id) {
-        case PROMICRO_RESET:
-            promicro_bootloader_jmp(false);
-            break;
-        case PROMICRO_PROGRAM:
-            promicro_bootloader_jmp(true);
-            break;
-        case TEST:
-          return (record->event.pressed ?
-              MACRO( T(T),T(E),T(S),T(T), END ) :
-              MACRO_NONE);
-        default:
-            break;
-    }
-}
+const uint8_t PROGMEM fn_keycode[] = {    
+    KC_NO, //FN0
+    KC_NO, //FN1 
+};
 
 
 
