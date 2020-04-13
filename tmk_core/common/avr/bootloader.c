@@ -131,9 +131,13 @@ void bootloader_jump_after_watchdog_reset(void)
         wdt_disable();
 
         // This is compled into 'icall', address should be in word unit, not byte.
+<<<<<<< HEAD
 
         ((void (*)(void))( (uint16_t)(BOOTLOADER_START / 2) ))();
 
+=======
+        ((void (*)(void))(BOOTLOADER_START/2))();
+>>>>>>> 6d9dd21045503044b7cb67879a42c47817d2852a
     }
 }
 
